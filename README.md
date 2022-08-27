@@ -16,14 +16,14 @@ There are a design file on Figma, that you can find out [here](https://www.figma
 The steps, at the point when I write this ReadMe, are the following :
 
 ✅ Dice components\
-⬜ Generate array of 10 random numbers\
-⬜ Map array to dice components\
-⬜ Roll dice button\
-⬜ Change dice to objects\
-⬜ Styling held dice\
-⬜ Hold dice\
-⬜ End game\
-⬜ New Game\
+✅ Generate array of 10 random numbers\
+✅ Map array to dice components\
+✅ Roll dice button\
+✅ Change dice to objects\
+✅ Styling held dice\
+✅ Hold dice\
+✅ End game\
+⬜ New Game
 
 # Final Result
 

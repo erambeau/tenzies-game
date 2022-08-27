@@ -1,45 +1,87 @@
 import './App.css';
 import Dice from './Dice'
+import React from 'react'
+import {nanoid} from 'nanoid'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from "react-confetti"
+
+
 
 function App() {
+
+  const [dices, setDices] = React.useState(allNewDice()) // array of 10 dices
+  const [tenzies, setTenzies] = React.useState(false)  // represents whether the game is won or not
+
+  // for Confetti
+  const { width, height } = useWindowSize()
+
+  React.useEffect(() => {
+      const all_frozen = dices.every((dice) => dice.froze)
+      const all_equals = dices.every((dice) => dice.value === dices[0].value)
+
+      if (all_frozen && all_equals) {
+            setTenzies(true)
+      }
+  }  
+  , [dices])
+
+  function generateNewDice() {
+      return {
+                  value: Math.floor(Math.random() * 6) + 1, 
+                  froze: false,
+                  id: nanoid()
+             }
+  }
+
+  function allNewDice() {
+      const res = []
+      for (let i = 0 ; i < 10 ; i ++){
+            res.push(generateNewDice())
+      }
+      return res;
+  }
+
+  function rollDices () {
+      setDices(prevDices => {
+            return prevDices.map(dice => {
+                  return dice.froze ? 
+                         dice :
+                         generateNewDice()
+            })
+      })
+  }
+
+  function freezeDice (idDiceFroze) {
+      setDices(prevDices => {
+            return prevDices.map(dice => {
+                  return dice.id === idDiceFroze ? {...dice, froze: !dice.froze} : dice
+            })
+      })
+  }
+
+  const dicesElements = dices.map(dice => 
+                              (
+                              <Dice key={dice.id}
+                                    id={dice.id}
+                                    value={dice.value}
+                                    froze={dice.froze}
+                                    freezeDice={freezeDice}
+                              />
+                              ))
+
+
   return (
+
     <div className="App">
+      
       <main className="window-game">
         <h1 className="game-title">Tenzies</h1>
         <p className="game-description">Roll until all dice are the same. Click each dice to freeze it at its current value between rolls</p>
         <div className="game-dices">
-          <Dice id={1}
-                value={1}
-                froze={true} />
-          <Dice id={2}
-                value={2}
-                froze={false} />
-          <Dice id={3}
-                value={1}
-                froze={true} />
-          <Dice id={4}
-                value={4}
-                froze={false} />
-          <Dice id={5}
-                value={5}
-                froze={false} />
-          <Dice id={6}
-                value={3}
-                froze={false} />
-          <Dice id={7}
-                value={3}
-                froze={false} />
-          <Dice id={8}
-                value={5}
-                froze={false} />
-          <Dice id={9}
-                value={6}
-                froze={false} />
-          <Dice id={10}
-                value={1}
-                froze={true} />
+          {tenzies && <Confetti width={width} height={height}/>}
+          {dicesElements}
         </div>
-        <button className="game-roll-button">Roll</button>
+        <button className="game-roll-button" onClick={rollDices}>{tenzies ? "New Game" : "Roll"}</button>
 
       </main>
     </div>
