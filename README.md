@@ -4,8 +4,8 @@ WIP - React, HTML, CSS. I train my React skills developping a Tenzies game. I fo
 
 # What is Tenzies ?
 
-It's a game when you have 10 dices at the middle of the board.
-You have to roll each dice until all dice are the same.
+It's a game when you have 10 dices at the middle of the board.\
+You have to roll each dice until all dice are the same.\
 You have to click on each dice between each roll in order to freeze it at its current value.
 
 # Methodology
@@ -15,15 +15,15 @@ There are a design file on Figma, that you can find out [here](https://www.figma
 
 The steps, at the point when I write this ReadMe, are the following :
 
-⬜ Dice components
-⬜ Generate array of 10 random numbers
-⬜ Map array to dice components
-⬜ Roll dice button
-⬜ Change dice to objects
-⬜ Styling held dice
-⬜ Hold dice
-⬜ End game
-⬜ New Game
+✅ Dice components\
+⬜ Generate array of 10 random numbers\
+⬜ Map array to dice components\
+⬜ Roll dice button\
+⬜ Change dice to objects\
+⬜ Styling held dice\
+⬜ Hold dice\
+⬜ End game\
+⬜ New Game\
 
 # Final Result
 
