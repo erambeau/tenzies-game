@@ -23,7 +23,7 @@ The steps, at the point when I write this ReadMe, are the following :
 ✅ Styling held dice\
 ✅ Hold dice\
 ✅ End game\
-⬜ New Game
+✅ New Game
 
 # Final Result
 

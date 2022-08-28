@@ -75,6 +75,9 @@ function App() {
                               />
                               ))
 
+  const styleButton = {
+      backgroundColor: tenzies ? "#59E391" : "#5035FF"
+  }
 
   return (
 
@@ -87,9 +90,15 @@ function App() {
           {tenzies && <Confetti width={width} height={height}/>}
           {dicesElements}
         </div>
-        <button className="game-roll-button" onClick={rollDicesOrNewGame}>{tenzies ? "New Game" : "Roll"}</button>
-
+        <button className="game-roll-button" onClick={rollDicesOrNewGame} style={styleButton}>{tenzies ? "You won ! 💪\nPlay again ?" : "Roll"}</button>
       </main>
+      <div className="media-part" target="_blank" >
+            <a href="https://github.com/erambeau/tenzies-game">
+                  <img className="media-img" src={process.env.PUBLIC_URL+"/icons/github.png"} title="See this project on Github !" alt="Github"/>
+            </a>
+      </div>
+
+
     </div>
   );
 }
