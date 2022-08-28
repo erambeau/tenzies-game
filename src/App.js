@@ -9,9 +9,13 @@ import Confetti from "react-confetti"
 
 function App() {
 
+  const nbDices = 10    // nb dices - set less for debugging
+
   const [dices, setDices] = React.useState(allNewDice()) // array of 10 dices
   const [tenzies, setTenzies] = React.useState(false)  // represents whether the game is won or not
-
+  const [beginTheGame, setBeginTheGame] = React.useState(false) // at the first clic on a dice : set true to launch the timer
+  const [timer, setTimer] = React.useState({beginTime: 0, endTime: 0}) //timer in miliseconds
+  
   // for Confetti
   const { width, height } = useWindowSize()
 
@@ -21,9 +25,23 @@ function App() {
 
       if (all_frozen && all_equals) {
             setTenzies(true)
+            setBeginTheGame(false)
       }
   }  
   , [dices])
+
+
+
+  React.useEffect(() => {
+      if (beginTheGame) {
+            setTimer({beginTime: performance.now(), endTime: 0})
+      }
+      else {
+            setTimer(prevTimer => {return {...prevTimer, endTime: performance.now() } })
+      }
+  }
+  , [beginTheGame])
+
 
   function generateNewDice() {
       return {
@@ -35,7 +53,7 @@ function App() {
 
   function allNewDice() {
       const res = []
-      for (let i = 0 ; i < 10 ; i ++){
+      for (let i = 0 ; i < nbDices ; i ++){
             res.push(generateNewDice())
       }
       return res;
@@ -58,6 +76,11 @@ function App() {
   }
 
   function freezeDice (idDiceFroze) {
+
+      if (!beginTheGame) {
+            setBeginTheGame(true)
+      }
+
       setDices(prevDices => {
             return prevDices.map(dice => {
                   return dice.id === idDiceFroze ? {...dice, froze: !dice.froze} : dice
@@ -90,7 +113,13 @@ function App() {
           {tenzies && <Confetti width={width} height={height}/>}
           {dicesElements}
         </div>
-        <button className="game-roll-button" onClick={rollDicesOrNewGame} style={styleButton}>{tenzies ? "You won ! 💪\nPlay again ?" : "Roll"}</button>
+        <button className="game-roll-button" onClick={rollDicesOrNewGame} style={styleButton}>
+            {
+                  tenzies ? 
+                  `You won  in ${Math.floor((timer.endTime - timer.beginTime)/100) / 10}s ! 💪\nPlay again ?` : 
+                  "Roll"
+            }
+        </button>
       </main>
       <div className="media-part" target="_blank" >
             <a href="https://github.com/erambeau/tenzies-game">
