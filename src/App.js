@@ -41,14 +41,20 @@ function App() {
       return res;
   }
 
-  function rollDices () {
-      setDices(prevDices => {
-            return prevDices.map(dice => {
-                  return dice.froze ? 
-                         dice :
-                         generateNewDice()
+  function rollDicesOrNewGame () {
+      if (tenzies) {
+            setDices(allNewDice())
+            setTenzies(false)
+      }
+      else {
+            setDices(prevDices => {
+                  return prevDices.map(dice => {
+                        return dice.froze ? 
+                              dice :
+                              generateNewDice()
+                  })
             })
-      })
+      }
   }
 
   function freezeDice (idDiceFroze) {
@@ -81,7 +87,7 @@ function App() {
           {tenzies && <Confetti width={width} height={height}/>}
           {dicesElements}
         </div>
-        <button className="game-roll-button" onClick={rollDices}>{tenzies ? "New Game" : "Roll"}</button>
+        <button className="game-roll-button" onClick={rollDicesOrNewGame}>{tenzies ? "New Game" : "Roll"}</button>
 
       </main>
     </div>
