@@ -1,6 +1,7 @@
 # Overview
 
-WIP - React, HTML, CSS. I train my React skills developping a Tenzies game. I follow the challenges in Scrimba Learning.
+React, HTML, CSS. I train my React skills developping a Tenzies game. I follow the challenges in Scrimba Learning and add several features by my own.\
+Live [here](https://erambeau-tenzies-game.netlify.app/).
 
 # What is Tenzies ?
 
@@ -10,10 +11,10 @@ You have to click on each dice between each roll in order to freeze it at its cu
 
 # Methodology
 
-I am guided for this project by the Scrimba learning. See the first video of the sequence [here](https://scrimba.com/learn/learnreact/tenzies-project-intro-cof0d44bfad1fb88293fdc9d1). You may have to create an account, but the course is totally free.
-There are a design file on Figma, that you can find out [here](https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenzies)
+I am guided for this project by the Scrimba learning. See the first video of the sequence [here](https://scrimba.com/learn/learnreact/tenzies-project-intro-cof0d44bfad1fb88293fdc9d1). You may have to create an account, but the course is totally free.\
+There are a design file on Figma, that you can find out [here](https://www.figma.com/file/FqsxRUhAaXM4ezddQK0CdR/Tenzies).
 
-The steps, at the point when I write this ReadMe, are the following :
+The steps are the following :
 
 ✅ Dice components\
 ✅ Generate array of 10 random numbers\
@@ -25,10 +26,18 @@ The steps, at the point when I write this ReadMe, are the following :
 ✅ End game\
 ✅ New Game
 
+After the journey with Scrimba, I added several things :
+
+✅ Responsiveness on mobile\
+✅ A timer which begin when you click on the first dice\
+✅ Publish on [Netlify](https://erambeau-tenzies-game.netlify.app/)
+
 # Final Result
 
-The project is still under development.
-I will put here a GIF file to show my result when it's ended.
+Can you beat my score of 12.7 seconds ? 😼\
+Give a try here : https://erambeau-tenzies-game.netlify.app/
+
+![Demo](public/demo/demo-tenzies.gif)
 
 # Getting Started with Create React App
 
